@@ -1,19 +1,9 @@
-import { useTheme } from "@/shared/hooks/use-theme";
+import Header from "@/shared/components/header/Header";
 
 function App() {
-  const { theme, changeTheme } = useTheme();
-
   return (
-    <div className="min-h-screen w-full">
-      <div className="text-red-500">xd</div>
-      <button
-        className="text-green-300"
-        onClick={() => {
-          changeTheme(theme === "light" ? "dark" : "light");
-        }}
-      >
-        {theme}
-      </button>
+    <div className="mx-auto min-h-screen w-full max-w-7xl px-4 pt-5 pb-16 md:px-8 md:pt-6 xl:pt-10">
+      <Header />
     </div>
   );
 }

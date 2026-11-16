@@ -37,6 +37,9 @@
   --color-red-500: #de4840;
   --color-red-400: #f25c54;
 
+  --color-primary: var(--color-neutral-0);
+  --color-secondary: var(--color-neutral-900);
+
   /* Typography */
   --default-font-family: "Noto Sans", sans-serif;
 
@@ -100,18 +103,23 @@
   --radius-full: 999px;
 }
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 [data-theme="dark"] {
   --background-image-background: linear-gradient(
     180deg,
     #04091b 0%,
     #091540 100%
   );
+
+  --color-primary: var(--color-neutral-800);
+  --color-secondary: var(--color-neutral-0);
 }
 
 @layer base {
-  body {
+  * {
     transition:
-      background-color 300ms ease,
-      color 300ms ease;
+      background-color 500ms ease,
+      color 500ms ease;
   }
 }
