@@ -26,9 +26,9 @@ export default function ExtensionCard({
           className="rounded-10 size-15"
         />
         <div className="flex flex-col gap-y-2">
-          <motion.p exit={{ x: 20 }} className="text-preset-2 text-secondary">
+          <motion.h2 exit={{ x: 20 }} className="text-preset-2 text-secondary">
             {extension.name}
-          </motion.p>
+          </motion.h2>
           <motion.p
             exit={{ x: 20 }}
             className="text-preset-5 text-foreground min-h-[3lh]"
@@ -44,7 +44,15 @@ export default function ExtensionCard({
         >
           Remove
         </button>
-        <Switch isActive={extension.isActive} onChange={onStatusChange} />
+        <Switch
+          aria-label={
+            extension.isActive
+              ? `Deactivate ${extension.name}`
+              : `Activate ${extension.name}`
+          }
+          isActive={extension.isActive}
+          onChange={onStatusChange}
+        />
       </div>
     </motion.article>
   );
