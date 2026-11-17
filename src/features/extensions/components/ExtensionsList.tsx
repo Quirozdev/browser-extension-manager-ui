@@ -5,6 +5,7 @@ import { filters } from "@/features/extensions/constants/filters.const";
 import { filterExtensions } from "@/features/extensions/lib/filters";
 import { extensions as data } from "@/features/extensions/model/data";
 import type { Extension, FilterOption } from "@/features/extensions/types";
+import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 
 export default function ExtensionsList() {
@@ -50,20 +51,22 @@ export default function ExtensionsList() {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {filteredExtensions.length > 0 ? (
-          filteredExtensions.map((ext) => {
-            return (
-              <ExtensionCard
-                key={ext.name}
-                extension={ext}
-                onStatusChange={() => toggleExtensionStatus(ext)}
-                onRemove={() => removeExtension(ext)}
-              />
-            );
-          })
-        ) : (
-          <EmptyExtensions />
-        )}
+        <AnimatePresence>
+          {filteredExtensions.length > 0 ? (
+            filteredExtensions.map((ext) => {
+              return (
+                <ExtensionCard
+                  key={ext.name}
+                  extension={ext}
+                  onStatusChange={() => toggleExtensionStatus(ext)}
+                  onRemove={() => removeExtension(ext)}
+                />
+              );
+            })
+          ) : (
+            <EmptyExtensions />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
