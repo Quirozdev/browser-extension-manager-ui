@@ -29,7 +29,7 @@ export default function ExtensionCard({
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="text-preset-6 border-foreground hover:text-neutral-0 text-secondary cursor-pointer rounded-full border px-4 py-2 hover:border-transparent hover:bg-red-700 dark:hover:bg-red-400 dark:hover:text-neutral-900"
+          className="text-preset-6 border-foreground hover:text-neutral-0 text-secondary cursor-pointer rounded-full border px-4 py-2 outline-none hover:border-transparent hover:bg-red-700 focus:border-transparent focus:bg-neutral-100 focus:shadow-[0px_0px_0px_2px_#fff,0px_0px_0px_4px_var(--color-red-700)] dark:hover:bg-red-400 dark:hover:text-neutral-900 dark:focus:bg-neutral-600 dark:focus:shadow-[0px_0px_0px_2px_var(--color-neutral-900),0px_0px_0px_4px_var(--color-red-400)]"
           onClick={onRemove}
         >
           Remove
