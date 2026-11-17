@@ -9,7 +9,7 @@ export default function Switch({ isActive, onChange }: Props) {
       type="button"
       aria-label={isActive ? "Desactivate" : "Activate"}
       aria-pressed={isActive}
-      className={`h-5 w-9 cursor-pointer rounded-full bg-neutral-300 p-0.5 dark:bg-neutral-600 ${isActive && "bg-red-700 dark:bg-red-400"}`}
+      className={`h-5 w-9 cursor-pointer rounded-full bg-neutral-300 p-0.5 dark:bg-neutral-600 ${isActive && "bg-red-700 hover:bg-red-500 dark:bg-red-400 dark:hover:bg-red-500"}`}
       onClick={onChange}
     >
       <span

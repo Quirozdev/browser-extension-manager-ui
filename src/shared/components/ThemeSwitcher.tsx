@@ -8,7 +8,7 @@ export default function ThemeSwitcher() {
   return (
     <button
       aria-label={`Change theme to ${theme === "light" ? "dark" : "light"}`}
-      className="rounded-12 flex size-12.5 cursor-pointer items-center justify-center bg-neutral-100 text-green-300 dark:bg-neutral-700"
+      className="rounded-12 flex size-12.5 cursor-pointer items-center justify-center bg-neutral-100 text-green-300 hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600"
       onClick={() => {
         changeTheme(theme === "light" ? "dark" : "light");
       }}
