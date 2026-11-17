@@ -13,7 +13,7 @@ export default function ExtensionCard({
   onRemove,
 }: Props) {
   return (
-    <article className="rounded-20 bg-primary flex flex-col gap-y-6 border border-neutral-200 px-5 py-5 shadow-[0px_2px_2px_0px_rgba(194,206,225,0.2),0px_1px_5px_1px_rgba(194,206,225,0.22)]">
+    <article className="rounded-20 bg-primary flex flex-col gap-y-6 border border-neutral-200 px-5 py-5 shadow-[0px_2px_2px_0px_rgba(194,206,225,0.2),0px_1px_5px_1px_rgba(194,206,225,0.22)] dark:border-neutral-600 dark:shadow-none">
       <div className="flex gap-x-4">
         <img
           src={extension.logo}
@@ -21,15 +21,15 @@ export default function ExtensionCard({
           className="rounded-10 size-15"
         />
         <div className="flex flex-col gap-y-2">
-          <p className="text-preset-2 text-neutral-900">{extension.name}</p>
-          <p className="text-preset-5 text-neutral-600">
+          <p className="text-preset-2 text-secondary">{extension.name}</p>
+          <p className="text-preset-5 text-foreground">
             {extension.description}
           </p>
         </div>
       </div>
       <div className="flex items-center justify-between">
         <button
-          className="text-preset-6 cursor-pointer rounded-full border border-neutral-300 px-4 py-2 text-neutral-900"
+          className="text-preset-6 border-foreground text-secondary cursor-pointer rounded-full border px-4 py-2"
           onClick={onRemove}
         >
           Remove

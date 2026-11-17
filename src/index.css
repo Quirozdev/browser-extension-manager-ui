@@ -39,6 +39,7 @@
 
   --color-primary: var(--color-neutral-0);
   --color-secondary: var(--color-neutral-900);
+  --color-foreground: var(--color-neutral-600);
 
   /* Typography */
   --default-font-family: "Noto Sans", sans-serif;
@@ -114,6 +115,7 @@
 
   --color-primary: var(--color-neutral-800);
   --color-secondary: var(--color-neutral-0);
+  --color-foreground: var(--color-neutral-300);
 }
 
 @layer base {
