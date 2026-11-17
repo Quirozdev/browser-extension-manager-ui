@@ -22,7 +22,7 @@ export default function ExtensionCard({
         />
         <div className="flex flex-col gap-y-2">
           <p className="text-preset-2 text-secondary">{extension.name}</p>
-          <p className="text-preset-5 text-foreground">
+          <p className="text-preset-5 text-foreground min-h-[3lh]">
             {extension.description}
           </p>
         </div>
