@@ -1,10 +1,34 @@
+import ExtensionCard from "@/features/extensions/components/ExtensionCard";
 import StatusFilter from "@/features/extensions/components/StatusFilter";
 import { filters } from "@/features/extensions/constants/filters.const";
-import type { FilterOption } from "@/features/extensions/types";
+import { extensions as data } from "@/features/extensions/model/data";
+import type { Extension, FilterOption } from "@/features/extensions/types";
 import { useState } from "react";
 
 export default function ExtensionsList() {
+  const [extensions, setExtensions] = useState<Extension[]>(data);
   const [activeFilter, setActiveFilter] = useState<FilterOption>("all");
+
+  const filteredExtensions = extensions;
+
+  function toggleExtensionStatus(extension: Extension) {
+    setExtensions(
+      extensions.map((ext) => {
+        if (ext === extension) {
+          return { ...extension, isActive: !extension.isActive };
+        }
+        return ext;
+      }),
+    );
+  }
+
+  function removeExtension(extension: Extension) {
+    setExtensions(
+      extensions.filter((ext) => {
+        return ext !== extension;
+      }),
+    );
+  }
 
   return (
     <section className="flex flex-col gap-y-10 md:gap-y-8">
@@ -22,6 +46,18 @@ export default function ExtensionsList() {
             );
           })}
         </div>
+      </div>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+        {filteredExtensions.map((ext) => {
+          return (
+            <ExtensionCard
+              key={ext.name}
+              extension={ext}
+              onStatusChange={() => toggleExtensionStatus(ext)}
+              onRemove={() => removeExtension(ext)}
+            />
+          );
+        })}
       </div>
     </section>
   );
