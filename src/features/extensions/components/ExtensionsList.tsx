@@ -1,6 +1,7 @@
 import ExtensionCard from "@/features/extensions/components/ExtensionCard";
 import StatusFilter from "@/features/extensions/components/StatusFilter";
 import { filters } from "@/features/extensions/constants/filters.const";
+import { filterExtensions } from "@/features/extensions/lib/filters";
 import { extensions as data } from "@/features/extensions/model/data";
 import type { Extension, FilterOption } from "@/features/extensions/types";
 import { useState } from "react";
@@ -9,12 +10,12 @@ export default function ExtensionsList() {
   const [extensions, setExtensions] = useState<Extension[]>(data);
   const [activeFilter, setActiveFilter] = useState<FilterOption>("all");
 
-  const filteredExtensions = extensions;
+  const filteredExtensions = filterExtensions(extensions, activeFilter);
 
   function toggleExtensionStatus(extension: Extension) {
     setExtensions(
       extensions.map((ext) => {
-        if (ext === extension) {
+        if (ext.name === extension.name) {
           return { ...extension, isActive: !extension.isActive };
         }
         return ext;
@@ -25,7 +26,7 @@ export default function ExtensionsList() {
   function removeExtension(extension: Extension) {
     setExtensions(
       extensions.filter((ext) => {
-        return ext !== extension;
+        return ext.name !== extension.name;
       }),
     );
   }
