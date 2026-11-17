@@ -15,22 +15,22 @@ export default function ExtensionsList() {
   const filteredExtensions = filterExtensions(extensions, activeFilter);
 
   function toggleExtensionStatus(extension: Extension) {
-    setExtensions(
-      extensions.map((ext) => {
+    setExtensions((current) => {
+      return current.map((ext) => {
         if (ext.name === extension.name) {
           return { ...extension, isActive: !extension.isActive };
         }
         return ext;
-      }),
-    );
+      });
+    });
   }
 
   function removeExtension(extension: Extension) {
-    setExtensions(
-      extensions.filter((ext) => {
+    setExtensions((current) => {
+      return current.filter((ext) => {
         return ext.name !== extension.name;
-      }),
-    );
+      });
+    });
   }
 
   return (
