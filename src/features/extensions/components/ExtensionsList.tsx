@@ -1,3 +1,4 @@
+import EmptyExtensions from "@/features/extensions/components/EmptyExtensions";
 import ExtensionCard from "@/features/extensions/components/ExtensionCard";
 import StatusFilter from "@/features/extensions/components/StatusFilter";
 import { filters } from "@/features/extensions/constants/filters.const";
@@ -49,16 +50,20 @@ export default function ExtensionsList() {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {filteredExtensions.map((ext) => {
-          return (
-            <ExtensionCard
-              key={ext.name}
-              extension={ext}
-              onStatusChange={() => toggleExtensionStatus(ext)}
-              onRemove={() => removeExtension(ext)}
-            />
-          );
-        })}
+        {filteredExtensions.length > 0 ? (
+          filteredExtensions.map((ext) => {
+            return (
+              <ExtensionCard
+                key={ext.name}
+                extension={ext}
+                onStatusChange={() => toggleExtensionStatus(ext)}
+                onRemove={() => removeExtension(ext)}
+              />
+            );
+          })
+        ) : (
+          <EmptyExtensions />
+        )}
       </div>
     </section>
   );
